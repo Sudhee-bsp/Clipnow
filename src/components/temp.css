@@ -1,4 +1,14 @@
 .text_center {
-    text-align: center;
+  text-align: center;
 }
-
+#clipid {
+  background-color: rgb(212, 231, 255);
+}
+.disperr {
+  /* all: unset; */
+  color: #cc0033;
+  display: inline-block;
+  font-size: 12px;
+  /* margin-top: -23px; */
+  /* float: left; */
+}
