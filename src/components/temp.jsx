@@ -18,6 +18,12 @@ import {
 } from "firebase/database";
 import moment from "moment";
 import "./temp.css";
+import Pattern from 'url-knife'; 
+import Linkify from 'linkify-react';
+
+
+
+
 function Temp() {
   const [clipid, setClipid] = useState("");
   const [message, setMessage] = useState("");
@@ -27,6 +33,8 @@ function Temp() {
   const [clipurl, setClipurl] = useState("");
   const [disperr, setDisperr] = useState(false);
   const [time, setTime] = useState(Date.now());
+//   const [msgUrl,setMsgUrl]=useState([]);
+  const [knife,setKnife]=useState("");
   const navigate = useNavigate();
 
   const setmessage = (e) => {
@@ -46,6 +54,23 @@ function Temp() {
         await setClipid(snapshot.val().clipid);
         await setMessage(snapshot.val().message);
         await setTime(snapshot.val().time)
+        if(snapshot.val().status=="deleted"){
+            remove(ref(db, "/Tempusers/" + id));
+            setTempidexist(false);
+        }
+        var sample2=Pattern.TextArea.extractAllUrls(snapshot.val().message, {
+            'ip_v4': true,
+            'ip_v6': true,
+            'localhost': true,
+            'intranet': false
+          });
+        // await setMsgUrl(sample2);
+        // console.log(sample2);
+        var str="";
+        sample2.map((key, index) => {
+            str=str+sample2[index].value.url+" ";
+          })
+          setKnife(str);
         setTimeout(async () => {
           setTempidexist(true);
           // if(clipid!=='' && message!=='') {
@@ -59,8 +84,9 @@ function Temp() {
           //     // setTempidexist(true);
           // }
           if (status === "deleted") {
+              console.log('deleted');
             setMessage("");
-            await remove(ref(db, "/Tempusers/" + id));
+            remove(ref(db, "/Tempusers/" + id));
             setTempidexist(false);
             Window.location.href = "/";
           }
@@ -90,7 +116,8 @@ function Temp() {
     var timeOfDay = hours < 12 ? 'AM' : 'PM';
   
     return date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear() + ' ' + hours + ':' + minutes + ':'+ seconds + timeOfDay;
-  }
+  
+}
 
   const createClipart = (e) => {
     e.preventDefault();
@@ -186,6 +213,13 @@ function Temp() {
                         {clipurl}
                       </a>
                     </p>
+                  )}
+                </span>
+                <span>
+                  {knife && (
+                      <Linkify tagName="p" options={{target: '_blank' }}>
+                        {knife}
+                      </Linkify>
                   )}
                 </span>
                 <MDBBtn type="submit" className="mb-4" onClick={createClipart}>
