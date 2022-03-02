@@ -16,7 +16,14 @@ import {
   onValue,
   remove,
 } from "firebase/database";
+import moment from "moment";
 import "./temp.css";
+import Pattern from 'url-knife'; 
+import Linkify from 'linkify-react';
+
+
+
+
 function Temp() {
   const [clipid, setClipid] = useState("");
   const [message, setMessage] = useState("");
@@ -25,6 +32,9 @@ function Temp() {
 
   const [clipurl, setClipurl] = useState("");
   const [disperr, setDisperr] = useState(false);
+  const [time, setTime] = useState(Date.now());
+//   const [msgUrl,setMsgUrl]=useState([]);
+  const [knife,setKnife]=useState("");
   const navigate = useNavigate();
 
   const setmessage = (e) => {
@@ -43,6 +53,24 @@ function Temp() {
         console.log(snapshot.val());
         await setClipid(snapshot.val().clipid);
         await setMessage(snapshot.val().message);
+        await setTime(snapshot.val().time)
+        if(snapshot.val().status=="deleted"){
+            remove(ref(db, "/Tempusers/" + id));
+            setTempidexist(false);
+        }
+        var sample2=Pattern.TextArea.extractAllUrls(snapshot.val().message, {
+            'ip_v4': true,
+            'ip_v6': true,
+            'localhost': true,
+            'intranet': false
+          });
+        // await setMsgUrl(sample2);
+        // console.log(sample2);
+        var str="";
+        sample2.map((key, index) => {
+            str=str+sample2[index].value.url+" ";
+          })
+          setKnife(str);
         setTimeout(async () => {
           setTempidexist(true);
           // if(clipid!=='' && message!=='') {
@@ -56,8 +84,9 @@ function Temp() {
           //     // setTempidexist(true);
           // }
           if (status === "deleted") {
+              console.log('deleted');
             setMessage("");
-            await remove(ref(db, "/Tempusers/" + id));
+            remove(ref(db, "/Tempusers/" + id));
             setTempidexist(false);
             Window.location.href = "/";
           }
@@ -70,16 +99,38 @@ function Temp() {
     });
   }, [status, clipurl]);
 
+  const dateFormatUTC = (date) => {
+    var months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+  
+    var hours = date.getHours();
+    if (hours < 10) hours = '0' + hours;
+  
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    if (hours < 10) hours = '0' + hours;
+  
+    var monthName = months[date.getMonth()];
+    var timeOfDay = hours < 12 ? 'AM' : 'PM';
+  
+    return date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear() + ' ' + hours + ':' + minutes + ':'+ seconds + timeOfDay;
+  
+}
+
   const createClipart = (e) => {
     e.preventDefault();
     //upload the id and message to realtime database
     const dbRef = ref(getDatabase());
+    const pctime = dateFormatUTC(new Date())
+    console.log(pctime);
     if (clipid !== "") {
       set(child(dbRef, `Tempusers/${clipid}`), {
         clipid: clipid,
         message: message,
         status: "created",
-        time: new Date().toLocaleString(),
+        time: pctime,
       });
       //   alert("Your clipart has been created");
       // if (message !== "") {
@@ -164,6 +215,13 @@ function Temp() {
                     </p>
                   )}
                 </span>
+                <span>
+                  {knife && (
+                      <Linkify tagName="p" options={{target: '_blank' }}>
+                        {knife}
+                      </Linkify>
+                  )}
+                </span>
                 <MDBBtn type="submit" className="mb-4" onClick={createClipart}>
                   Update
                 </MDBBtn>
@@ -171,6 +229,7 @@ function Temp() {
                 <MDBBtn type="submit" className="mb-4" onClick={deleteClipart}>
                   Delete Clipart
                 </MDBBtn>
+                {time && <p>Last updated: {moment(time, "DD/MM/YYYY HH:mm:ss Z").fromNow()} </p>}
               </div>
             ) : (
               <MDBBtn type="submit" className="mb-4" onClick={createClipart}>
