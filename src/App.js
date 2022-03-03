@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Board from "./components/board";
 import Temp from "./components/temp";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/:id" element={<Temp />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
