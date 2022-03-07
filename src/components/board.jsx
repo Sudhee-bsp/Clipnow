@@ -6,7 +6,7 @@ import {
   MDBRow,
   MDBContainer,
 } from "mdb-react-ui-kit";
-import { BrowserRouter as Router, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Board() {
   const [id, setId] = useState("");
@@ -19,7 +19,7 @@ function Board() {
 
   return (
     <div className="container mt-4">
-      <h3 className="text_center">CLIPNOW</h3>
+      {/* <h3 className="text_center">CLIPNOW</h3> */}
       <h5 className="text_center">Create your CLIP!</h5>
       <MDBRow className="d-flex justify-content-center mt-5">
         <MDBCol md="6">

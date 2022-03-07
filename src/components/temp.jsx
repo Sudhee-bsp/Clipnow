@@ -90,14 +90,14 @@ function Temp() {
             setTempidexist(false);
             Window.location.href = "/";
           }
-        }, 5000);
+        }, 2000);
       } else {
         // refresh page
         // alert('Sorry, this clip is not available anymore');
         // window.location.href = '/';
       }
     });
-  }, [status, clipurl]);
+  }, [status, clipurl, time]);
 
   const dateFormatUTC = (date) => {
     var months = [
@@ -112,7 +112,7 @@ function Temp() {
     var seconds = date.getSeconds();
     if (hours < 10) hours = '0' + hours;
   
-    var monthName = months[date.getMonth()];
+    //var monthName = months[date.getMonth()];
     var timeOfDay = hours < 12 ? 'AM' : 'PM';
   
     return date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear() + ' ' + hours + ':' + minutes + ':'+ seconds + timeOfDay;
@@ -157,7 +157,7 @@ function Temp() {
       //   alert("Your clipart has been deleted");
       setTimeout(() => {
         navigate("/");
-      }, 3000);
+      }, 2000);
     } else {
       alert("Please enter your clipid");
       const url = window.location.href;
@@ -173,9 +173,9 @@ function Temp() {
 
   return (
     <div className="container mt-4">
-      <h4 className="text_center">
+      {/* <h4 className="text_center">
         <Link to="/">CLIPNOW</Link>
-      </h4>
+      </h4> */}
       <h5 className="text_center">Here's your clip ready! Create it.</h5>
       <div>
         <MDBRow className="d-flex justify-content-center mt-5">
@@ -207,9 +207,9 @@ function Temp() {
               <div>
                 <span>
                   {clipurl && (
-                    <p className="fst-italic">
+                    <p className="fst-italic fw-bold">
                       Share this Clip-URL to access your data:
-                      <a href={clipurl} target="_blank">
+                      <a href={clipurl} target="_blank" rel="noreferrer">
                         {clipurl}
                       </a>
                     </p>
@@ -218,6 +218,7 @@ function Temp() {
                 <span>
                   {knife && (
                       <Linkify tagName="p" options={{target: '_blank' }}>
+                        <span>URL's found: </span>
                         {knife}
                       </Linkify>
                   )}
