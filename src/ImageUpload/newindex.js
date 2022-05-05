@@ -47,6 +47,7 @@ function Newindex() {
   const [progress, setProgress] = useState(0);
   const [numfiles, setNumfiles] = useState(0);
   const [status, setStatus] = useState("");
+  const [numAttachments, setNumAttachments] = useState(0);
   const [copy, setCopy] = useState("copy link!");
 
   // setting filesurls from firebase
@@ -73,11 +74,28 @@ function Newindex() {
     const db = getDatabase();
     onValue(ref(db, "/TempusersTest/" + id), async (snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         await setFilesurls(snapshot.val().attachments);
+        afterNumAttachments(filesurls);
       }
     });
-  }, []);
+  }, [numAttachments]);
+
+  const afterNumAttachments = (filesurls) => {
+    if (filesurls.length !== 0) {
+      var cnt = 0;
+      filesurls.map((url) => {
+        if (url !== "no_file") {
+          cnt++;
+        }
+      });
+      setNumAttachments(cnt);
+    }
+  };
+
+  setTimeout(() => {
+    afterNumAttachments(filesurls);
+  }, 500);
 
   const updateUploadedFiles = (files) => {
     setNewUserInfo({ ...newUserInfo, profileImages: files });
@@ -137,7 +155,7 @@ function Newindex() {
         }
       );
     });
-    console.log(filesurls);
+    // console.log(filesurls);
     Promise.all(promises)
       .then(() => {
         console.log("All images uploaded");
@@ -203,6 +221,11 @@ function Newindex() {
     navigator.clipboard.writeText(url);
   };
 
+  const downloadFile = (url) => {
+    // download this url file
+    window.open(url);
+  };
+
   // code for getting file metadata
   const metaData = () => {
     // console.log(url);
@@ -256,7 +279,9 @@ function Newindex() {
       </form>
       <br />
       <span>
-        <b>YOUR ATTACHMENTS:</b>
+        <b>
+          <i>YOU HAVE {numAttachments} ATTACHMENTS:</i>
+        </b>
       </span>
       <br />
       <br />
@@ -291,6 +316,8 @@ function Newindex() {
                             className=""
                             color="info"
                             target="_blank"
+                            download
+                            onClick={() => downloadFile(url)}
                           >
                             Download
                           </MDBBtn>

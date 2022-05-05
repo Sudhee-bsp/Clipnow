@@ -52,7 +52,7 @@ function Temp() {
     const db = getDatabase();
     onValue(ref(db, "/Tempusers/" + id), async (snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         await setClipid(snapshot.val().clipid);
         await setMessage(snapshot.val().message);
         await setTime(snapshot.val().time)
@@ -178,7 +178,7 @@ function Temp() {
   const toggleShow = () => {
     setTimeout(() => {
       setShowShow(!showShow);
-    }, 3000)
+    }, 1000)
   }
 
   return (
