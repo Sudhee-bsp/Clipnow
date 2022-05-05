@@ -1,0 +1,17 @@
+.modal {
+    background: transparent;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.attachments {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.attachment_files {
+    display: flex;
+    flex-direction: column;
+}
+

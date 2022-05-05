@@ -1,9 +1,12 @@
+import NewIndex from '../ImageUpload/newindex';
+
 import {
   MDBInput,
   MDBBtn,
   MDBCol,
   MDBRow,
   MDBContainer,
+  MDBCollapse
 } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
 import { useState, React, useEffect } from "react";
@@ -20,7 +23,6 @@ import moment from "moment";
 import "./temp.css";
 import Pattern from 'url-knife'; 
 import Linkify from 'linkify-react';
-
 
 
 
@@ -171,8 +173,11 @@ function Temp() {
     setDisperr(true);
   };
 
+  const [showShow, setShowShow] = useState(false);
+  const toggleShow = () => setShowShow(!showShow);
+
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 mb-6">
       {/* <h4 className="text_center">
         <Link to="/">CLIPNOW</Link>
       </h4> */}
@@ -223,6 +228,12 @@ function Temp() {
                       </Linkify>
                   )}
                 </span>
+                <MDBContainer className="mt-4 mb-4">
+                  <MDBBtn outline rounded color="secondary" onClick={toggleShow}>Attach Files</MDBBtn>
+                  <MDBCollapse show={showShow}>
+                   <NewIndex/>
+                  </MDBCollapse>
+                </MDBContainer>
                 <MDBBtn type="submit" className="mb-4" onClick={createClipart}>
                   Update
                 </MDBBtn>
