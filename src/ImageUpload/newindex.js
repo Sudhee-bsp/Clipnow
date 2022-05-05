@@ -71,7 +71,7 @@ function Newindex() {
     setClipid(id);
 
     const db = getDatabase();
-    onValue(ref(db, "/TempusersTest/"+id), async (snapshot) => {
+    onValue(ref(db, "/TempusersTest/" + id), async (snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val());
         await setFilesurls(snapshot.val().attachments);
@@ -150,7 +150,7 @@ function Newindex() {
 
     // update just urls in realtime firebase
     const dburls = {};
-    dburls["/TempusersTest/"+clipid+"/attachments/"] = filesurls;
+    dburls["/TempusersTest/" + clipid + "/attachments/"] = filesurls;
 
     update(ref(db), dburls)
       .then(() => {
@@ -183,7 +183,8 @@ function Newindex() {
         // File deleted successfully
         console.log("File Deleted");
         const updates = {};
-        updates["/TempusersTest/"+clipid+"/attachments/" + urlid] = "no_file";
+        updates["/TempusersTest/" + clipid + "/attachments/" + urlid] =
+          "no_file";
         update(ref(db), updates)
           .then(() => {
             // console.log("URL deleted");
@@ -260,7 +261,7 @@ function Newindex() {
       <br />
       <br />
       <br />
-      <MDBContainer className="attachment_files mb-4">
+      <MDBContainer className="attachment_files mb-6">
         <MDBRow>
           {
             // display map of urls only if no_file

@@ -174,7 +174,12 @@ function Temp() {
   };
 
   const [showShow, setShowShow] = useState(false);
-  const toggleShow = () => setShowShow(!showShow);
+  // const toggleShow = () => setShowShow(!showShow);
+  const toggleShow = () => {
+    setTimeout(() => {
+      setShowShow(!showShow);
+    }, 3000)
+  }
 
   return (
     <div className="container mt-4 mb-6">
@@ -184,7 +189,7 @@ function Temp() {
       <h5 className="text_center">Here's your clip ready! Create it.</h5>
       <div>
         <MDBRow className="d-flex justify-content-center mt-5">
-          <MDBCol md="6">
+          <MDBCol md="12">
             <MDBInput
               id="clipid"
               wrapperClass={disperr ? "mb-0" : "mb-4"}
