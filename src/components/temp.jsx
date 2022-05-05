@@ -231,7 +231,7 @@ function Temp() {
                 <MDBContainer className="mt-4 mb-4">
                   <MDBBtn outline rounded color="secondary" onClick={toggleShow}>Attach Files</MDBBtn>
                   <MDBCollapse show={showShow}>
-                   <NewIndex/>
+                    <NewIndex/>
                   </MDBCollapse>
                 </MDBContainer>
                 <MDBBtn type="submit" className="mb-4" onClick={createClipart}>

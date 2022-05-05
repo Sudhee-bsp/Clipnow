@@ -60,10 +60,18 @@ function Newindex() {
 
   const storage = getStorage();
 
+  //getting clip id of an user
+  const [clipid, setClipid] = useState("");
+
   // get files urls from firebase
   useEffect(() => {
+    //getting clipid and setting clipid
+    const url = window.location.href;
+    const id = url.substring(url.lastIndexOf("/") + 1);
+    setClipid(id);
+
     const db = getDatabase();
-    onValue(ref(db, "/TempusersTest/hemanth"), async (snapshot) => {
+    onValue(ref(db, "/TempusersTest/"+id), async (snapshot) => {
       if (snapshot.exists()) {
         console.log(snapshot.val());
         await setFilesurls(snapshot.val().attachments);
@@ -142,7 +150,7 @@ function Newindex() {
 
     // update just urls in realtime firebase
     const dburls = {};
-    dburls["/TempusersTest/hemanth/attachments/"] = filesurls;
+    dburls["/TempusersTest/"+clipid+"/attachments/"] = filesurls;
 
     update(ref(db), dburls)
       .then(() => {
@@ -175,7 +183,7 @@ function Newindex() {
         // File deleted successfully
         console.log("File Deleted");
         const updates = {};
-        updates["/TempusersTest/hemanth/attachments/" + urlid] = "no_file";
+        updates["/TempusersTest/"+clipid+"/attachments/" + urlid] = "no_file";
         update(ref(db), updates)
           .then(() => {
             // console.log("URL deleted");
