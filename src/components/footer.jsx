@@ -7,7 +7,7 @@ import {
 function Footer() {
   return (
     <MDBFooter
-      className="text-center text-white mb-0 fixed-bottom"
+      className="myfooter text-center text-white mb-0"
       style={{ backgroundColor: "#120E43" }}
     >
       <div className="text-center p-2">

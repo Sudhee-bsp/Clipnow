@@ -1,3 +1,13 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
 .text_center {
   text-align: center;
 }
@@ -11,4 +21,16 @@
   font-size: 12px;
   /* margin-top: -23px; */
   /* float: left; */
+}
+
+.container {
+  min-height: 100%;
+  display: block;
+}
+
+.myfooter {
+  position: absolute;
+  bottom: 0;
+  height: 82px; 
+  width: 100%;
 }
