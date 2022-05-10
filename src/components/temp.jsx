@@ -258,7 +258,7 @@ function Temp() {
                 </MDBBtn>
                 &emsp;
                 <MDBBtn type="submit" className="mb-4" onClick={deleteClipart}>
-                  Delete Clipart
+                  Delete Clip
                 </MDBBtn>
                 {time && <p>Last updated: {moment(time, "DD/MM/YYYY HH:mm:ss Z").fromNow()} </p>}
               </div>
