@@ -37,6 +37,7 @@ function Temp() {
   const [time, setTime] = useState(Date.now());
 //   const [msgUrl,setMsgUrl]=useState([]);
   const [knife,setKnife]=useState("");
+  const [copyTextStatus, setCopyTextStatus] = useState("Copy");
   const navigate = useNavigate();
 
   const setmessage = (e) => {
@@ -181,6 +182,14 @@ function Temp() {
     }, 1000)
   }
 
+  const copyMessage = (getMessage) => {
+    navigator.clipboard.writeText(getMessage);
+    setCopyTextStatus("COPIED!");
+    setTimeout(() => {
+      setCopyTextStatus("COPY");
+    }, 3000);
+  };
+
   return (
     <div className="container mt-4 mb-6">
       {/* <h4 className="text_center">
@@ -208,11 +217,16 @@ function Temp() {
               wrapperClass="mb-4"
               textarea
               id="message"
-              rows={4}
+              rows={8}
               label="Message"
               value={message}
               onChange={setmessage}
-            />
+            >
+              <MDBBtn className='copy_btn' size='sm' onClick={() => copyMessage(message)}>
+                <i className="far fa-copy"></i>
+                {" "}<small>{copyTextStatus}</small>
+              </MDBBtn>
+            </MDBInput>
             {tempidexist ? (
               <div>
                 <span>

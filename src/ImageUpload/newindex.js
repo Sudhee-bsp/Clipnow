@@ -4,6 +4,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
   deleteObject,
+  getMetadata,
 } from "firebase/storage";
 import { ref as sRef } from "firebase/storage";
 
@@ -48,7 +49,8 @@ function Newindex() {
   const [numfiles, setNumfiles] = useState(0);
   const [status, setStatus] = useState("");
   const [numAttachments, setNumAttachments] = useState(0);
-  const [copy, setCopy] = useState("copy link!");
+  const [metaInfo, setMetaInfo] = useState({});
+  const [copy, setCopy] = useState("copy file url!");
 
   // setting filesurls from firebase
   const [filesurls, setFilesurls] = useState([]);
@@ -77,6 +79,7 @@ function Newindex() {
         // console.log(snapshot.val());
         await setFilesurls(snapshot.val().attachments);
         afterNumAttachments(filesurls);
+        // getMetaInfo(filesurls);
       }
     });
   }, [numAttachments]);
@@ -93,8 +96,32 @@ function Newindex() {
     }
   };
 
+  var metaInfo2 = [];
+
+  const getMetaInfo = (filesurls) => {
+    var ind = 0;
+
+    if (filesurls.length != 0) {
+      filesurls.map((url, i) => {
+        if (url !== "no_file") {
+          var fileHereRef = sRef(storage, url);
+          getMetadata(fileHereRef)
+            .then((metadata) => {
+              metaInfo2[i] = metadata.name;
+            })
+            .catch((error) => {
+              console.log("Couldn't fetch metadata");
+            });
+        }
+      });
+      // setMetaInfo(metaInfo2);
+      console.log(ind, metaInfo2);
+    }
+  };
+
   setTimeout(() => {
     afterNumAttachments(filesurls);
+    // getMetaInfo(filesurls);
   }, 500);
 
   const updateUploadedFiles = (files) => {

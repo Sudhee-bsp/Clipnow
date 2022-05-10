@@ -10,7 +10,7 @@ function Footer() {
       className="myfooter text-center text-white mb-0"
       style={{ backgroundColor: "#120E43" }}
     >
-      <div className="text-center p-2">
+      <div className="text-center p-0">
         <div className="text-center">
           Developed © 2022 | Clipnow
           <br />

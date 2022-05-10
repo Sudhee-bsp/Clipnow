@@ -77,7 +77,7 @@ const FileUpload = ({
         <DragDropText>Drag and drop your files anywhere or</DragDropText>
         <UploadFileBtn type="button" onClick={handleUploadBtnClick}>
           <i className="fas fa-file-upload" />
-          <span> Upload {otherProps.multiple ? "files" : "a file"}</span>
+          <span> Select {otherProps.multiple ? "files" : "a file"}</span>
         </UploadFileBtn>
         <FormField
           type="file"

@@ -23,6 +23,15 @@ body {
   /* float: left; */
 }
 
+.copy_btn {
+  clear: both;
+  float: right;
+}
+
+.myaccordion {
+  height: auto;
+}
+
 .container {
   min-height: 100%;
   display: block;
@@ -31,6 +40,6 @@ body {
 .myfooter {
   position: absolute;
   bottom: 0;
-  height: 82px; 
+  height: 68px; 
   width: 100%;
 }
