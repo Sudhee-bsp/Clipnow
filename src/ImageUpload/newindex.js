@@ -285,7 +285,7 @@ function Newindex() {
         </MDBProgress>
 
         <FileUpload
-          accept=".jpg,.png,.jpeg,.pdf,.docx,.doc,.ppt,.pptx,.xls,.xlsx,.txt"
+          accept=".jpg,.png,.jpeg,.pdf,.docx,.doc,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.csv"
           label="Your Files"
           multiple
           updateFilesCb={updateUploadedFiles}
