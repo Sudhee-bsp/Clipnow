@@ -173,12 +173,14 @@ function Newindex() {
 
           // new version of firebase storage
           await getDownloadURL(uploadTask.snapshot.ref).then((urls) => {
+            console.log(urls)
             setUrls((prevState) => [...prevState, urls]);
             setFilesurls((prevState) => [...prevState, urls]);
             setImages([]);
             setNumfiles(0);
             setStatus("( Uploaded Successfully! )");
           });
+          // console.log(urls);
         }
       );
     });
@@ -285,7 +287,7 @@ function Newindex() {
         </MDBProgress>
 
         <FileUpload
-          accept=".jpg,.png,.jpeg,.pdf,.docx,.doc,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.csv"
+          accept=".jpg,.png,.jpeg,.pdf,.docx,.doc,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.csv,.R"
           label="Your Files"
           multiple
           updateFilesCb={updateUploadedFiles}
