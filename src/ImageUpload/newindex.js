@@ -128,12 +128,14 @@ function Newindex() {
 
           // new version of firebase storage
           await getDownloadURL(uploadTask.snapshot.ref).then((urls) => {
+            console.log(urls)
             setUrls((prevState) => [...prevState, urls]);
             setFilesurls((prevState) => [...prevState, urls]);
             setImages([]);
             setNumfiles(0);
             setStatus("( Uploaded Successfully! )");
           });
+          // console.log(urls);
         }
       );
     });
