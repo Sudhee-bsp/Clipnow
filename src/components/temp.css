@@ -32,7 +32,7 @@ body {
   height: auto;
 }
 
-.container {
+.mycontainer {
   min-height: 100%;
   display: block;
 }
