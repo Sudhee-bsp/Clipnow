@@ -173,7 +173,7 @@ function Newindex() {
 
           // new version of firebase storage
           await getDownloadURL(uploadTask.snapshot.ref).then((urls) => {
-            console.log(urls)
+            console.log(urls);
             setUrls((prevState) => [...prevState, urls]);
             setFilesurls((prevState) => [...prevState, urls]);
             setImages([]);
@@ -271,6 +271,22 @@ function Newindex() {
     //   });
   };
 
+  const getFileType = (url) => {
+    // console.log(url);
+    // storage
+    //   .refFromURL(url)
+    //   .getMetadata()
+    //   .then((metadata) => {
+    //     setFilename(metadata.name);
+    //     setFiletype(metadata.contentType);
+    //     setFilesize(metadata.size);
+    //   })
+    //   .catch((error) => {
+    //     console.log("Couldn't fetch metadata");
+    //   });
+  }; 
+  
+
   return (
     <div className="attachments ">
       <form onSubmit={handleSubmit}>
@@ -334,7 +350,10 @@ function Newindex() {
                       </MDBBadge>
                       <MDBCard>
                         <MDBCardImage
-                          src={url || "http://via.placeholder.com/300"}
+                          src={
+                            url ||
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgjC01O7BVnk6v6nXE_20fa2GJOPoI0Pmwpg&usqp=CAU"
+                          }
                           alt="your-file"
                           position="top"
                         />
