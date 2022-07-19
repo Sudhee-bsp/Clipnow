@@ -11,9 +11,12 @@ body {
 .text_center {
   text-align: center;
 }
+
 #clipid {
-  background-color: rgb(212, 231, 255);
+  background-color: #aadaee;
+  /* color: #ffffff; */
 }
+
 .disperr {
   /* all: unset; */
   color: #cc0033;
