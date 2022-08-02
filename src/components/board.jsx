@@ -48,11 +48,11 @@ function Board() {
               {/* <h2 className="display-2">Fluid jumbotron</h2> */}
               <p className="lead fst-italic">
                 Create your <strong>unique CLIP ID</strong> and use it as your
-                live personal clipboard to share between all your devices.
+                live personal clipboard to share across all your devices.
               </p>
             </MDBContainer>
 
-            <MDBBtn className="mb-4" block>
+            <MDBBtn rounded className="col-6 mb-4">
               Get your CLIP
             </MDBBtn>
           </form>
