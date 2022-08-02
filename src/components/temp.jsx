@@ -74,7 +74,7 @@ function Temp() {
         // console.log(sample2);
         var str = "";
         sample2.map((key, index) => {
-          str = str + sample2[index].value.url + " ";
+          str = str + sample2[index].value.url + ", ";
         });
         setKnife(str);
 
@@ -333,7 +333,8 @@ function Temp() {
                 <span>
                   {clipurl && (
                     <p className="fst-italic fw-bold">
-                      Share this Clip-URL to access your data:
+                      <i className="fa fa-info-circle"></i> Share this Clip-URL
+                      to access your data:{" "}
                       <a href={clipurl} target="_blank" rel="noreferrer">
                         {clipurl}
                       </a>
@@ -343,19 +344,22 @@ function Temp() {
                 <span>
                   {knife && (
                     <Linkify tagName="p" options={{ target: "_blank" }}>
-                      <span>URL's found: </span>
+                      <span>
+                        {" "}
+                        <i className="fa fa-link"></i> URLs found:{" "}
+                      </span>
                       {knife}
                     </Linkify>
                   )}
                 </span>
-                <MDBContainer className="mt-4 mb-4">
+                <MDBContainer className="mt-4 mb-5">
                   <MDBBtn
                     outline
                     rounded
                     color="secondary"
                     onClick={toggleShow}
                   >
-                    Attach Files
+                    <i className="fa fa-paperclip"></i> Attach Files Here
                   </MDBBtn>
 
                   {/* ----------------------------- ATTACH FILES Component here------------------------ */}
@@ -367,11 +371,11 @@ function Temp() {
                   {/* ----------------------------- ATTACH FILES Component ends------------------------ */}
                 </MDBContainer>
                 <MDBBtn type="submit" className="mb-4" onClick={updateClipart}>
-                  Update
+                  <i className="fa fa-edit"></i> Update
                 </MDBBtn>
                 &emsp;
                 <MDBBtn type="submit" className="mb-4" onClick={deleteClipart}>
-                  Delete Clip
+                  <i className="fa fa-trash"></i> Delete Clip
                 </MDBBtn>
                 {time && (
                   <p>

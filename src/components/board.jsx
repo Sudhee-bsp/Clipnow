@@ -53,7 +53,7 @@ function Board() {
             </MDBContainer>
 
             <MDBBtn rounded className="col-6 mb-4">
-              Get your CLIP
+              Get your CLIP <i className="fas fa-angle-double-right"></i>
             </MDBBtn>
           </form>
         </MDBCol>
