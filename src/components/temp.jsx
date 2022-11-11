@@ -312,7 +312,7 @@ function Temp() {
 
             <MDBInput
               className="cliptextarea"
-              wrapperClass="mb-4"
+              wrapperClass="mb-5"
               textarea
               id="message"
               rows={8}
