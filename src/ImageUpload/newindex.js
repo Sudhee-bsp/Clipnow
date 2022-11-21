@@ -41,6 +41,7 @@ import {
 } from "firebase/database";
 
 import "./newindex.css";
+import { FilePreviewContainer } from "../file-upload/file-upload.styles";
 
 function Newindex() {
   const [images, setImages] = useState([]);
@@ -50,7 +51,7 @@ function Newindex() {
   const [status, setStatus] = useState("");
   const [numAttachments, setNumAttachments] = useState(0);
   const [metaInfo, setMetaInfo] = useState({});
-  const [copy, setCopy] = useState("copy file url!");
+  const [copy, setCopy] = useState("COPY FILE");
 
   // setting filesurls from firebase
   const [filesurls, setFilesurls] = useState([]);
@@ -285,7 +286,46 @@ function Newindex() {
     //     console.log("Couldn't fetch metadata");
     //   });
   }; 
-  
+
+  // function to handle the type of format of the file
+  const handle_image_format = (url) => {
+    if(url.includes(".pdf")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/1)%20pdf%20-%20ft1.png";;
+    } else if(url.includes(".doc") || url.includes(".docx")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/2)%20doc%20-%20ft1.png";
+    } else if(url.includes(".ppt") || url.includes(".pptx")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/5)%20ppt%20-%20ft1.png";
+    } else if(url.includes(".xls") || url.includes(".xlsx")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/3)%20xls%20-%20ft1.png";
+    } else if(url.includes(".zip") || url.includes(".rar")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/6)%20zip%20-%20ft1.png";
+    } else if(url.includes(".txt")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/3)%20txt%20-%20ft1.png";
+    } else if(url.includes(".mp4")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/7)%20mp4%20-%20ft1.png";
+    } else if(url.includes(".mp3")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/16)%20mp3.png";
+    } else if(url.includes(".java")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/12)%20java.png";
+    } else if(url.includes(".html")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/8)%20html.png";
+    } else if(url.includes(".css")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/9)%20css.png";
+    } else if(url.includes(".js")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/10)%20js.png";
+    } else if(url.includes(".py")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/13)%20py-file-format.png";
+    } else if(url.includes(".cpp")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/14)%20c%20plus.png";
+    } else if(url.includes(".jsx")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/11)%20jsx.png";
+    } else if(url.includes(".json")) {
+      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/15)%20json.png";
+    }
+    else {
+      return url;
+    }
+  }
 
   return (
     <div className="attachments ">
@@ -303,7 +343,7 @@ function Newindex() {
         </MDBProgress>
 
         <FileUpload
-          accept=".jpg,.png,.jpeg,.pdf,.docx,.doc,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.csv,.R,.pem,.ppk"
+          accept=".jpg,.png,.jpeg,.pdf,.docx,.doc,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.csv,.R,.pem,.ppk,.mp4,.java,.py,.html,.css,.js,.c,.jsx,.json"
           label="Your Files"
           multiple
           updateFilesCb={updateUploadedFiles}
@@ -317,7 +357,7 @@ function Newindex() {
           onClick={handleUpload}
           type="submit"
         >
-          UPLOAD
+          UPLOAD <i className="fa fa-upload"></i>
         </MDBBtn>
         <br />
         <span>{status}</span>
@@ -342,32 +382,33 @@ function Newindex() {
                     <MDBCol xl="3" sm="3" key={i}>
                       <MDBBadge
                         pill
-                        className="mx-2"
-                        color="warning"
+                        className="copy_file_btn mx-2"
+                        color="info"
                         onClick={() => copyText(url, i)}
                       >
                         {copy}
                       </MDBBadge>
-                      <MDBCard>
+                      <MDBCard className="my-3">
                         <MDBCardImage
                           src={
-                            url ||
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgjC01O7BVnk6v6nXE_20fa2GJOPoI0Pmwpg&usqp=CAU"
+                            handle_image_format(url)
                           }
                           alt="your-file"
                           position="top"
+                          width="200"
+                          height="200"
                         />
                         <MDBCardBody className="attachments_files">
                           <MDBBtn
                             outline
                             rounded
-                            className=""
+                            className="my-1"
                             color="info"
                             target="_blank"
                             download
                             onClick={() => downloadFile(url)}
                           >
-                            Download
+                            Download <i className="fa fa-download"></i>
                           </MDBBtn>
 
                           <MDBBtn
@@ -382,7 +423,7 @@ function Newindex() {
                               setStaticModal(!staticModal);
                             }}
                           >
-                            Delete File
+                            Delete File <i className="fa fa-trash"></i>
                           </MDBBtn>
                           <MDBModal
                             staticBackdrop
@@ -416,7 +457,7 @@ function Newindex() {
                                       deleteurl(deleteitem, deleteitemurl);
                                     }}
                                   >
-                                    Delete
+                                    Delete <i className="fa fa-trash"></i>
                                   </MDBBtn>
                                 </MDBModalFooter>
                               </MDBModalContent>

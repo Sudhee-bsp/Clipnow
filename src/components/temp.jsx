@@ -291,7 +291,7 @@ function Temp() {
         <Link to="/">CLIPNOW</Link>
       </h4> */}
       <h5 className="text_center">
-        Here's your CLIP ready! {tempidexist ? "Created." : "Create it."}{" "}
+        Here's your unique CLIP ready! {tempidexist ? "Created." : "Create it."}{" "}
       </h5>
       <div>
         <MDBRow className="d-flex justify-content-center mt-5">

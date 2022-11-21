@@ -10,11 +10,11 @@ import {
   PreviewList,
   FileMetaData,
   RemoveFileIcon,
-  InputLabel
+  InputLabel,
 } from "./file-upload.styles";
 
 const KILO_BYTES_PER_BYTE = 1000;
-const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 500000;
+const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 50000;
 
 const convertNestedObjectToArray = (nestedObj) =>
   Object.keys(nestedObj).map((key) => nestedObj[key]);
@@ -29,8 +29,6 @@ const FileUpload = ({
 }) => {
   const fileInputField = useRef(null);
   const [files, setFiles] = useState({});
-
-  // const [images, setImages] = useState([]);
 
   const handleUploadBtnClick = () => {
     fileInputField.current.click();
@@ -53,6 +51,8 @@ const FileUpload = ({
         }
         files[file.name] = file;
         console.log(files);
+      } else {
+        alert("File size too large");
       }
     }
     return { ...files };
@@ -63,7 +63,6 @@ const FileUpload = ({
     updateFilesCb(filesAsArray);
   };
 
-  
   const removeFile = (fileName) => {
     delete files[fileName];
     setFiles({ ...files });
