@@ -290,37 +290,37 @@ function Newindex() {
   // function to handle the type of format of the file
   const handle_image_format = (url) => {
     if(url.includes(".pdf")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/1)%20pdf%20-%20ft1.png";;
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/1)%20pdf%20-%20ft1.png";;
     } else if(url.includes(".doc") || url.includes(".docx")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/2)%20doc%20-%20ft1.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/2)%20doc%20-%20ft1.png";
     } else if(url.includes(".ppt") || url.includes(".pptx")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/5)%20ppt%20-%20ft1.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/5)%20ppt%20-%20ft1.png";
     } else if(url.includes(".xls") || url.includes(".xlsx")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/3)%20xls%20-%20ft1.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/3)%20xls%20-%20ft1.png";
     } else if(url.includes(".zip") || url.includes(".rar")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/6)%20zip%20-%20ft1.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/6)%20zip%20-%20ft1.png";
     } else if(url.includes(".txt")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/3)%20txt%20-%20ft1.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/3)%20txt%20-%20ft1.png";
     } else if(url.includes(".mp4")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/7)%20mp4%20-%20ft1.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/7)%20mp4%20-%20ft1.png";
     } else if(url.includes(".mp3")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/16)%20mp3.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/16)%20mp3.png";
     } else if(url.includes(".java")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/12)%20java.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/12)%20java.png";
     } else if(url.includes(".html")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/8)%20html.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/8)%20html.png";
     } else if(url.includes(".css")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/9)%20css.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/9)%20css.png";
     } else if(url.includes(".js")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/10)%20js.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/10)%20js.png";
     } else if(url.includes(".py")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/13)%20py-file-format.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/13)%20py-file-format.png";
     } else if(url.includes(".cpp")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/14)%20c%20plus.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/14)%20c%20plus.png";
     } else if(url.includes(".jsx")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/11)%20jsx.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/11)%20jsx.png";
     } else if(url.includes(".json")) {
-      return "https://storage.cloud.google.com/clipart-7c32f.appspot.com/file_logos/15)%20json.png";
+      return "https://storage.googleapis.com/clipart-7c32f.appspot.com/file_logos/15)%20json.png";
     }
     else {
       return url;
