@@ -331,7 +331,11 @@ function Temp() {
             </MDBInput>
             {tempidexist ? (
               <div>
-                <MDBSwitch id="flexSwitchCheckDefault" label="Secure CLIP" />
+                <MDBSwitch
+                  id="flexSwitchCheckDefault"
+                  className="toggle_btn"
+                  label="Secure CLIP"
+                />
                 <br />
                 <span>
                   {clipurl && (
