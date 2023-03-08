@@ -21,7 +21,6 @@ function Board() {
     <div className="container mt-4">
       {/* <h3 className="text_center">CLIPNOW</h3> */}
       <h5 className="text_center">Create your CLIP!</h5>
-      <p>Note: Only Alphanumerics are allowed</p>
       <MDBRow className="d-flex justify-content-center mt-5">
         <MDBCol md="6">
           <form
