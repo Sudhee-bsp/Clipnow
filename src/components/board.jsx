@@ -34,6 +34,7 @@ function Board() {
               wrapperClass="mb-4"
               label="Enter your CLIP-ID"
               value={id}
+              pattern="^[a-zA-Z0-9]*$"
               onChange={(e) => setId(e.target.value)}
             />
             {/* <MDBInput
