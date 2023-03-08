@@ -7,6 +7,7 @@ import {
   MDBRow,
   MDBContainer,
   MDBCollapse,
+  MDBSwitch,
 } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
 import { useState, React, useEffect } from "react";
@@ -330,6 +331,12 @@ function Temp() {
             </MDBInput>
             {tempidexist ? (
               <div>
+                <MDBSwitch
+                  id="flexSwitchCheckDefault"
+                  className="toggle_btn"
+                  label="Secure CLIP"
+                />
+                <br />
                 <span>
                   {clipurl && (
                     <p className="fst-italic fw-bold">
