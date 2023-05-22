@@ -1,4 +1,5 @@
 import NewIndex from "../ImageUpload/newindex";
+import PopupPrompt from "./popup";
 
 import {
   MDBInput,
@@ -22,6 +23,7 @@ import {
 } from "firebase/database";
 import moment from "moment";
 import "./temp.css";
+import "./popup.css";
 import Pattern from "url-knife";
 import Linkify from "linkify-react";
 import Toastify from "toastify-js";
@@ -331,11 +333,7 @@ function Temp() {
             </MDBInput>
             {tempidexist ? (
               <div>
-                <MDBSwitch
-                  id="flexSwitchCheckDefault"
-                  className="toggle_btn"
-                  label="Secure CLIP"
-                />
+                <PopupPrompt />
                 <br />
                 <span>
                   {clipurl && (
