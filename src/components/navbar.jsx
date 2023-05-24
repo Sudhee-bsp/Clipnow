@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { MDBContainer, MDBNavbar, MDBNavbarBrand } from "mdb-react-ui-kit";
+import {
+  MDBContainer,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBBtn,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 import Logo from "../assets/log5.svg";
 
 import DarkMode from "./theme/darkmode";
+import AboutPage from "./about";
+
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("clipDarkMode") === "true") {
@@ -30,7 +41,25 @@ export default function Navbar() {
               loading="lazy"
             />
           </MDBNavbarBrand>
-          <DarkMode />
+
+          <div className="flex">
+            <div style={{ float: "left", marginRight: "15px" }}>
+              <DarkMode />
+            </div>
+            <MDBBtn
+              tag="a"
+              color="none"
+              className="m-1"
+              style={{ color: "#3b5998" }}
+            >
+              <MDBIcon
+                onClick={() => navigate("/about")}
+                fas
+                icon="paw"
+                size="lg"
+              />
+            </MDBBtn>
+          </div>
         </MDBContainer>
       </MDBNavbar>
     </>
