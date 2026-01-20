@@ -1,16 +1,63 @@
 .about {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
-  margin-top: 60px;
-  margin-bottom: 100px;
 }
 
 .about_heading {
-  font-size: 24px;
-  margin-top: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
 }
 
 .about_content {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
+  color: #555;
+  line-height: 1.5;
 }
-  
+
+.slogan-box {
+  background: rgba(59, 113, 202, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #3b71ca;
+}
+
+.stats-box {
+  background: linear-gradient(135deg, #3b71ca 0%, #5c8ee6 100%);
+  border-radius: 20px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+}
+
+.stats-box .counter {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Dark mode support */
+body.dark-mode .about_heading,
+[data-theme="dark"] .about_heading {
+  color: #ffffff !important;
+}
+
+body.dark-mode .about_content,
+[data-theme="dark"] .about_content {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .slogan-box,
+[data-theme="dark"] .slogan-box {
+  background: rgba(59, 113, 202, 0.3);
+}
+
+body.dark-mode .slogan-box p,
+[data-theme="dark"] .slogan-box p {
+  color: #ffffff !important;
+}
+
+body.dark-mode .about span,
+body.dark-mode .about p,
+[data-theme="dark"] .about span,
+[data-theme="dark"] .about p {
+  color: #e0e0e0 !important;
+}

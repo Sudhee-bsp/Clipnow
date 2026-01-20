@@ -32,7 +32,143 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Utility Classes */
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.fade-in-up-delay {
+  animation: fadeInUp 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* Button Enhancements */
+.btn-animated {
+  transition: all 0.3s ease;
+}
+
+.btn-animated:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.btn-animated:active {
+  transform: translateY(0);
+}
+
+/* Card Styles */
+.feature-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode feature cards */
+[data-theme="dark"] .feature-card,
+.dark .feature-card,
+body.dark-mode .feature-card {
+  background: rgba(30, 30, 50, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .feature-card p,
+[data-theme="dark"] .feature-card h5,
+[data-theme="dark"] .feature-card h6,
+.dark .feature-card p,
+.dark .feature-card h5,
+.dark .feature-card h6,
+body.dark-mode .feature-card p,
+body.dark-mode .feature-card h5,
+body.dark-mode .feature-card h6 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .feature-card small,
+.dark .feature-card small,
+body.dark-mode .feature-card small {
+  color: #cccccc !important;
+}
+
+/* Icon Styles */
+.feature-icon {
+  font-size: 2rem;
+  color: #3b71ca;
+  margin-bottom: 0.5rem;
+}
+
+/* Improved Copy Button */
+.copy-btn-enhanced {
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.copy-btn-enhanced:hover {
+  background-color: #3b71ca !important;
+  color: white !important;
+}
+
+.copy-btn-enhanced.copied {
+  background-color: #14a44d !important;
+  color: white !important;
+}
+
+/* Fix input label/text in dark mode - keep dark text on light input background */
+body.dark-mode .form-outline .form-control,
+body.dark-mode .form-outline label,
+body.dark-mode .form-outline .form-notch-leading,
+body.dark-mode .form-outline .form-notch-middle,
+body.dark-mode .form-outline .form-notch-trailing,
+[data-theme="dark"] .form-outline .form-control,
+[data-theme="dark"] .form-outline label {
+  color: #333 !important;
+}
+
+body.dark-mode .form-outline .form-control::placeholder,
+[data-theme="dark"] .form-outline .form-control::placeholder {
+  color: #666 !important;
+}
+
+/* Keep input background light in dark mode */
+body.dark-mode .form-outline .form-control,
+[data-theme="dark"] .form-outline .form-control {
+  background-color: #f8f9fa !important;
 }

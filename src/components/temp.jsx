@@ -321,11 +321,12 @@ function Temp() {
               onChange={setmessage}
             >
               <MDBBtn
-                className="copy_btn"
+                className={`copy_btn copy-btn-enhanced ${copyTextStatus === "COPIED!" ? "copied" : ""}`}
                 size="sm"
                 onClick={() => copyMessage(message)}
               >
-                <i className="far fa-copy"></i> <small>{copyTextStatus}</small>
+                <i className={copyTextStatus === "COPIED!" ? "fas fa-check" : "far fa-copy"}></i>{" "}
+                <small>{copyTextStatus}</small>
               </MDBBtn>
             </MDBInput>
             {tempidexist ? (
@@ -370,12 +371,11 @@ function Temp() {
 
                   {/* ----------------------------- ATTACH FILES Component ends------------------------ */}
                 </MDBContainer>
-                <MDBBtn type="submit" className="mb-4" onClick={updateClipart}>
-                  <i className="fa fa-edit"></i> Update
+                <MDBBtn type="submit" className="mb-4 btn-animated me-2" onClick={updateClipart}>
+                  <i className="fa fa-save me-1"></i> Update
                 </MDBBtn>
-                &emsp;
-                <MDBBtn type="submit" className="mb-4" onClick={deleteClipart}>
-                  <i className="fa fa-trash"></i> Delete Clip
+                <MDBBtn type="submit" className="mb-4 btn-animated" color="danger" onClick={deleteClipart}>
+                  <i className="fa fa-trash me-1"></i> Delete Clip
                 </MDBBtn>
                 {time && (
                   <p>
@@ -385,7 +385,8 @@ function Temp() {
                 )}
               </div>
             ) : (
-              <MDBBtn type="submit" className="mb-4" onClick={createClipart}>
+              <MDBBtn type="submit" className="mb-4 btn-animated" size="lg" onClick={createClipart}>
+                <i className="fa fa-plus-circle me-2"></i>
                 Create Clip
               </MDBBtn>
             )}
