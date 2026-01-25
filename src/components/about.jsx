@@ -1,12 +1,14 @@
 import { useState, React, useEffect } from "react";
-
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 import {
   getDatabase,
   ref,
-  set,
-  child,
   onValue,
-  remove,
 } from "firebase/database";
 
 import "./about.css";
@@ -22,45 +24,63 @@ const Aboutpage = () => {
         await setCount(snapshot.size);
       }
     });
-  });
+  }, []);
 
   return (
-    <div>
-      <div class="about">
-        <h1 class="about_heading">About Clipnow</h1>
-        <p class="about_content">
-          Clipnow is a simple and easy-to-use personal clipboard that allows you
-          to clip and save links, images, and text from the web. It is a great
-          way to save content that you want to read, share or reference later.
-        </p>
-        <p class="paragraph">
-          To use Clipnow, simply enter a unique alphanumeric text{" "}
-          <b>
-            <i>("clipID")</i>
-          </b>{" "}
-          and create it then use the textarea to save your content, and then
-          after created you can attach any media files (currently supporting
-          jpg, png, gif, pdf, docs, xls).{" "}
-          <i>Any kind of video formats are not supported</i>, to restrict the
-          database usage. You can delete or update your clip anytime on any
-          device.
-          <br />
-          <br />
-          <b>
-            <i>Create, Share, get it DONE.</i>
-          </b>
-        </p>
-        <p class="paragraph"></p>
-        <br />
-        <p class="paragraph">Built with 💙 for CODE</p>
+    <MDBContainer className="mt-3">
+      <div className="about fade-in-up">
+        <h3 className="about_heading mb-3">
+          <MDBIcon fas icon="info-circle" className="me-2" />
+          About Clipnow
+        </h3>
 
-        <p class="paragraph">
-          <i>
-            So far, Clipnow created <b>{count} +</b> & counting
-          </i>
+        <p className="about_content">
+          A simple personal clipboard to save and share links, images, and text across your devices.
         </p>
+
+        {/* Feature Cards */}
+        <MDBRow className="mt-3 mb-3">
+          <MDBCol md="4" className="mb-2">
+            <div className="feature-card text-center py-3">
+              <MDBIcon fas icon="edit" className="feature-icon" />
+              <h6 className="mb-1">Create</h6>
+              <small className="text-muted">Enter unique CLIP-ID</small>
+            </div>
+          </MDBCol>
+          <MDBCol md="4" className="mb-2">
+            <div className="feature-card text-center py-3">
+              <MDBIcon fas icon="share-alt" className="feature-icon" />
+              <h6 className="mb-1">Share</h6>
+              <small className="text-muted">Access from any device</small>
+            </div>
+          </MDBCol>
+          <MDBCol md="4" className="mb-2">
+            <div className="feature-card text-center py-3">
+              <MDBIcon fas icon="paperclip" className="feature-icon" />
+              <h6 className="mb-1">Attach</h6>
+              <small className="text-muted">Upload files & media</small>
+            </div>
+          </MDBCol>
+        </MDBRow>
+
+        <div className="slogan-box text-center p-2 mb-3">
+          <p className="mb-0 fst-italic">
+            <MDBIcon fas icon="quote-left" className="me-1 text-primary" size="sm" />
+            Create, Share, get it DONE.
+            <MDBIcon fas icon="quote-right" className="ms-1 text-primary" size="sm" />
+          </p>
+        </div>
+
+        <div className="d-flex justify-content-center align-items-center gap-4">
+          <span>Built with 💙 for CODE</span>
+          <div className="stats-box text-center px-4 py-2">
+            <MDBIcon fas icon="chart-line" className="me-2" />
+            <span className="counter">{count}+</span>
+            <small className="ms-1">clips</small>
+          </div>
+        </div>
       </div>
-    </div>
+    </MDBContainer>
   );
 };
 
